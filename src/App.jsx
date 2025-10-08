@@ -6,7 +6,7 @@ import { BsCloudHaze2Fill, BsCloudDrizzleFill, BsEye, BsWater, BsThermometer, Bs
 import { TbTemperatureCelsius } from 'react-icons/tb'
 import { ImSpinner8 } from 'react-icons/im'
 
-const APIKEY = "";
+const APIKEY = process.env.local.APIKEY;
 
 const App = () => {
   const [data, setData] = useState(null);
