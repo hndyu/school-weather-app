@@ -6,7 +6,7 @@ import { BsCloudHaze2Fill, BsCloudDrizzleFill, BsEye, BsWater, BsThermometer, Bs
 import { TbTemperatureCelsius } from 'react-icons/tb'
 import { ImSpinner8 } from 'react-icons/im'
 
-const APIKEY = process.env.local.APIKEY;
+const api_key = process.env.REACT_APP_APIKEY;
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -39,7 +39,7 @@ const App = () => {
   useEffect(() => {
     setLoading(true);
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIKEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${api_key}`;
 
     axios.get(url).then((res) => {
       setTimeout(() => {
