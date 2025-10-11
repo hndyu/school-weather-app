@@ -21,19 +21,17 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (inputValue !== "") {
       setLocation(inputValue);
-    }
-
-    const input = document.querySelector("input");
-    if (input.value === "") {
+    }else{
       setAnimate(true);
       setTimeout(() => {
         setAnimate(false);
       }, 500);
     }
-    input.value = "";
-    e.preventDefault();
+    setInputValue("");
   };
 
   useEffect(() => {
@@ -104,7 +102,8 @@ const App = () => {
 
       <form className={`${animate ? "animate-shake" : "animate-none"} h-16 bg-black/30 w-full max-w-[450px] rounded-full backdrop-blur-[32px] mb-8`}>
         <div className="h-full relative flex items-center justify-between p-2">
-          <input onClick={(e) => handleInput(e)}
+          <input onChange={(e) => handleInput(e)}
+            value={inputValue}
             className='flex-1 bg-transparent outline-none placeholder:text-white text-white text-[15px] font-light pl-6 h-full'
             type="text"
             placeholder='Search by city or country' />
@@ -154,7 +153,7 @@ const App = () => {
                     <BsEye />
                   </div>
                   <div>
-                    Visibility <span className='ml-2'>{data.visivility / 1000}km</span>
+                    Visibility <span className='ml-2'>{data.visibility / 1000}km</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-x-2">
